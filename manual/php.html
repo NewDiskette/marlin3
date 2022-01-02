@@ -1,0 +1,32 @@
+
+https://www.php.net/manual/ru/features.file-upload.post-method.php
+
+https://sukachoff.ru/programmy/kak-zagruzhat-faily-na-server-php-zagruzka-faila-na-server-s-pomoshchyu-javascript-i/
+
+<div> Настройка php.ini
+    https://prowebmastering.ru/php-upload-file.html
+{[Resource Limits]
+; Максимальное время выполнения скрипта в секундах
+max_execution_time = 60
+ 
+; Максимальное потребление памяти одним скриптом
+memory_limit = 64M
+ 
+[Data Handling]
+; Максимально допустимый размер данных отправляемых методом POST
+post_max_size = 5M
+ 
+[File Uploads]
+; Разрешение на загрузку файлов
+file_uploads = On
+ 
+; Папка для хранения файлов во время загрузки
+upload_tmp_dir = home/user/temp
+ 
+; Максимальный размер загружаемого файла
+upload_max_filesize = 5M
+ 
+; Максимально разрешённое количество одновременно загружаемых файлов
+max_file_uploads = 10
+Конфигурационный файл php.ini необходимо настраивать согласно бизнес-логики проекта! Например, мы планируем загружать не более десяти файлов до 2 Мбайт, а это значит нам понадобиться ~20 Мбайт памяти.
+</div>

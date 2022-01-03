@@ -18,7 +18,14 @@
         <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
     </head>
     <body class="mod-bg-1 mod-nav-link ">
+        <?php $items = [
+            ['title' => 'Reports', 'tags' => 'reports file'],
+            ['title' => 'Analytics', 'tags' => 'analytics graphs'],
+            ['title' => 'Export', 'tags' => 'export download'],
+            ['title' => 'Storage', 'tags' => 'storage'] ];?>
+
         <main id="js-page-content" role="main" class="page-content">
+
             <div class="col-md-6">
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
@@ -32,11 +39,30 @@
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <ol class="breadcrumb page-breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                                <li class="breadcrumb-item"><a href="#">PHP</a></li>
-                                <li class="breadcrumb-item active">Функции</li>
-                            </ol>
+                            <div class="panel-content">
+                                <div class="bg-warning-100 border border-warning rounded">
+                                    <div class="input-group p-2 mb-0">
+                                        <input type="text" class="form-control form-control-lg shadow-inset-2 bg-warning-50 border-warning" id="js-list-msg-filter" placeholder="Filter list">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text bg-warning-500 border-warning">
+                                                <i class="fal fa-search fs-xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
+                                       
+                                        <?php foreach($items as $item):?>
+                                            <li class="list-group-item">
+                                                <span data-filter-tags="<?php echo $item['tags'];?>">
+                                                    <?php echo $item['title'];?>
+                                                </span>
+                                            </li>
+                                        <?php endforeach;?>
+                                        
+                                    </ul>
+                                    <div class="filter-message js-filter-message mt-0 fs-sm"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -18,8 +18,47 @@
         <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
     </head>
     <body class="mod-bg-1 mod-nav-link ">
+        <?php
+            $items = [
+                [
+                    'title' => 'My Tasks',
+                    'value' => '130 / 500',
+                    'bg' => 'bg-fusion-400',
+                    'width' => '65%',
+                    'valuenow' => '65',
+                    'valuemin' => '0',
+                    'valuemax' => '100'
+                ],
+                [
+                    'title' => 'Transfered',
+                    'value' => '440 TB',
+                    'bg' => 'bg-success-500',
+                    'width' => '34%',
+                    'valuenow' => '34',
+                    'valuemin' => '0',
+                    'valuemax' => '100'
+                ],
+                [
+                    'title' => 'Bugs Squashed',
+                    'value' => '77%',
+                    'bg' => 'bg-info-400',
+                    'width' => '77%',
+                    'valuenow' => '77',
+                    'valuemin' => '0',
+                    'valuemax' => '100'
+                ],
+                [
+                    'title' => 'User Testing',
+                    'value' => '7 days',
+                    'bg' => 'bg-primary-300',
+                    'width' => '84%',
+                    'valuenow' => '84',
+                    'valuemin' => '0',
+                    'valuemax' => '100'
+                ]
+            ];
+        ?>
         <main id="js-page-content" role="main" class="page-content">
-
             <div class="col-md-6">
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
@@ -33,33 +72,25 @@
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <div class="panel-content">
-                                <div class="bg-warning-100 border border-warning rounded">
-                                    <div class="input-group p-2 mb-0">
-                                        <input type="text" class="form-control form-control-lg shadow-inset-2 bg-warning-50 border-warning" id="js-list-msg-filter" placeholder="Filter list">
-                                        <div class="input-group-append">
-                                            <div class="input-group-text bg-warning-500 border-warning">
-                                                <i class="fal fa-search fs-xl"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <ul id="js-list-msg" class="list-group px-2 pb-2 js-list-filter">
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="reports file">Reports</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="analytics graphs">Analytics</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="export download">Export</span>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span data-filter-tags="storage">Storage</span>
-                                        </li>
-                                    </ul>
-                                    <div class="filter-message js-filter-message mt-0 fs-sm"></div>
+                            
+                            <?php foreach($items as $item):?>
+                                <div class="d-flex mt-2">
+                                    <?php echo $item['title'];?>
+                                    <span class="d-inline-block ml-auto">
+                                        <?php echo $item['value'];?>
+                                    </span>
                                 </div>
-                            </div>
+                                <div class="progress progress-sm mb-3">
+                                    <div class="progress-bar <?php echo $item['bg'];?>"
+                                        role="progressbar"
+                                        style="width: <?php echo $item['width'];?>;"
+                                        aria-valuenow="<?php echo $item['valuenow'];?>"
+                                        aria-valuemin="<?php echo $item['valuemin'];?>"
+                                        aria-valuemax="<?php echo $item['valuemax'];?>">
+                                    </div>
+                                </div>
+                            <?php endforeach;?>    
+
                         </div>
                     </div>
                 </div>

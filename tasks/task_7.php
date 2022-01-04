@@ -25,11 +25,8 @@
     <body class="mod-bg-1 mod-nav-link ">
 
         <?php 
-            include 'connect.php';
-            $sql = 'SELECT * FROM people';
-            $statement = $pdo->prepare($sql);
-            $statement->execute();
-            $people = $statement->fetchAll(PDO::FETCH_ASSOC);
+            include 'app/functions.php';
+            $people = get_all_from_db ('people');
         ?>    
 
         <main id="js-page-content" role="main" class="page-content">

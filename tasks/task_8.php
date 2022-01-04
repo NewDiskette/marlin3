@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -18,6 +18,12 @@
         <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
     </head>
     <body class="mod-bg-1 mod-nav-link ">
+
+        <?php 
+            include 'app/functions.php';
+            $users = get_all_from_db ('users');
+        ?>
+
         <main id="js-page-content" role="main" class="page-content">
             <div class="col-md-6">
                 <div id="panel-1" class="panel">
@@ -47,50 +53,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td>Larry the Bird</td>
-                                            <td> Bird</td>
-                                            <td>@twitter</td>
-                                            <td>
-                                                <a href="show.php?id=" class="btn btn-info">Редактировать</a>
-                                                <a href="edit.php?id=" class="btn btn-warning">Изменить</a>
-                                                <a href="delete.php?id=" class="btn btn-danger">Удалить</a>
-                                            </td>
-                                        </tr>
+
+                                        <?php foreach($users as $user):?>
+                                            <tr>
+                                                <th scope="row"><?php echo $user['id'];?></th>
+                                                <td><?php echo $user['first_name'];?></td>
+                                                <td><?php echo $user['last_name'];?></td>
+                                                <td><?php echo $user['username'];?></td>
+                                                <td>
+                                                    <a href="app/show.php?id=<?php echo $user['id'];?>" class="btn btn-info">Просмотреть</a>
+                                                    <a href="app/edit.php?id=<?php echo $user['id'];?>" class="btn btn-warning">Изменить</a>
+                                                    <a href="app/delete.php?id=<?php echo $user['id'];?>" class="btn btn-danger">Удалить</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach;?>
+
                                     </tbody>
                                 </table>
                             </div>

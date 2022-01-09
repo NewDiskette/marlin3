@@ -1,6 +1,7 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -35,14 +36,17 @@
                             <div class="panel-content">
                                 <div class="form-group">
                                     <div class="alert alert-info fade show" role="alert">
-                                        Ваше сообщение выводится тут
+                                        <?php 
+                                            if(!empty($_SESSION['count'])){
+                                                $count = $_SESSION['count'];
+                                            }else{
+                                                $count = 0;
+                                            }
+                                        ?>
+                                        Кнопка была нажата: <b><?php echo $count;?></b> раз
                                     </div>
-                                    <form action="">
-                                        <div class="form-group">
-                                        	<label class="form-label" for="simpleinput">Text</label>
-                                            <input type="text" id="simpleinput" class="form-control">
-                                        </div>
-                                        <button class="btn btn-success mt-3">Submit</button>
+                                    <form action="app/controllers/task_13_handler.php" method="post">
+                                        <button class="btn btn-success mt-3" name="count">Submit</button>
                                     </form>
                                 </div>
                             </div>

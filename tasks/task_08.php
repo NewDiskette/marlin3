@@ -61,9 +61,9 @@
                                                 <td><?php echo $user['last_name'];?></td>
                                                 <td><?php echo $user['username'];?></td>
                                                 <td>
-                                                    <a href="app/show.php?id=<?php echo $user['id'];?>" class="btn btn-info">Просмотреть</a>
-                                                    <a href="app/edit.php?id=<?php echo $user['id'];?>" class="btn btn-warning">Изменить</a>
-                                                    <a href="app/delete.php?id=<?php echo $user['id'];?>" class="btn btn-danger">Удалить</a>
+                                                    <a href="app/08_show.php?id=<?php echo $user['id'];?>" class="btn btn-info">Просмотреть</a>
+                                                    <a href="app/08_edit.php?id=<?php echo $user['id'];?>" class="btn btn-warning">Изменить</a>
+                                                    <a href="app/08_delete.php?id=<?php echo $user['id'];?>" class="btn btn-danger">Удалить</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach;?>

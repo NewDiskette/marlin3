@@ -1,6 +1,7 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -34,10 +35,24 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-info fade show" role="alert">
-                                        Кнопка была нажата: <b>0</b> раз
-                                    </div>
-                                    <form action="">
+    
+                                    <?php if(isset($_SESSION['danger'])):?>
+                                        <div class="alert alert-danger fade show" role="alert">
+                                            <?php 
+                                                echo $_SESSION['danger'];
+                                                unset($_SESSION['danger']);
+                                            ?>
+                                        </div>
+                                    <?php endif;?>
+
+                                    <form action="app/controllers/task_11_handler.php" method="post">
+                                        <div class="form-group">
+                                        	<label class="form-label" for="simpleinput">Email</label>
+                                            <input type="text" id="simpleinput" name="email" class="form-control">
+                                        </div>
+
+                                        <label class="form-label" for="simpleinput">Password</label>
+                                        <input type="password" id="simpleinput" name="password" class="form-control">
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>

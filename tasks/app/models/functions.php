@@ -18,12 +18,12 @@ function get_all_from_db ($table){
     return $resalt;
 }
 
-function giv_on_db ($table, $columns, $values){
+function giv_on_db ($table, $columns, $value){
     include 'connect.php';
-    $sql = "INSERT INTO $table ($columns) VALUES (:values)";
+    $sql = "INSERT INTO $table ($columns) VALUES (:value)";
     $statement = $pdo->prepare($sql);
-    $statement->execute(['values' => $values]);
-    // echo $sql;
+    $statement->execute(['value' => $value]);
+    echo $sql;
 }
 
 function redirect_to($path){

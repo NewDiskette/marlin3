@@ -1,6 +1,7 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -34,17 +35,22 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-danger fade show" role="alert">
-                                        Этот эл адрес уже занят другим пользователем
-                                    </div>
-                                    <form action="">
-                                        <div class="form-group">
-                                        	<label class="form-label" for="simpleinput">Email</label>
-                                        <input type="text" id="simpleinput" class="form-control">
-                                        </div>
 
-                                        <label class="form-label" for="simpleinput">Password</label>
-                                        <input type="password" id="simpleinput" class="form-control">
+                                    <div class="alert alert-info fade show" role="alert">
+                                        <?php 
+                                            if(isset($_SESSION['message']) && $_SESSION['message'] !== ''){
+                                                echo $_SESSION['message'];
+                                            }else {
+                                                echo 'Ваше сообщение выводится тут';
+                                            }
+                                        ?>
+                                    </div>
+
+                                    <form action="app/controllers/task_12_handler.php" method="post">
+                                        <div class="form-group">
+                                        	<label class="form-label" for="simpleinput">Text</label>
+                                            <input type="text" id="simpleinput" name="message" class="form-control">
+                                        </div>
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>

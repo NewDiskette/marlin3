@@ -56,7 +56,7 @@
                                         </div>
                                     <?php endif;?>
 
-                                    <form action="app/save_10.php" method="post">
+                                    <form action="app/controllers/save_10.php" method="post">
                                         <label class="form-label" for="simpleinput">Text</label>
                                         <input type="text" id="simpleinput" class="form-control" name="text">
                                         <button class="btn btn-success mt-3" type="submit">Submit</button>

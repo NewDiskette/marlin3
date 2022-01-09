@@ -16,18 +16,13 @@
         <link rel="stylesheet" media="screen, print" href="css/fa-solid.css">
         <link rel="stylesheet" media="screen, print" href="css/fa-brands.css">
         <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
-        <style>
-            .banned {
-                apacity: .4;
-            }
-        </style>
     </head>
     <body class="mod-bg-1 mod-nav-link ">
 
         <?php 
-            include 'app/functions.php';
-            $people = get_all_from_db ('people');
-        ?>    
+            include 'app/models/functions.php';
+            $users = get_all_from_db ('users');
+        ?>
 
         <main id="js-page-content" role="main" class="page-content">
             <div class="col-md-6">
@@ -43,31 +38,38 @@
                     </div>
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <div class="d-flex flex-wrap demo demo-h-spacing mt-3 mb-3">
-                                
-                                <?php foreach($people as $person):?>
-                                    <div class="<?php echo $person['status'] == 'banned' ? 'banned' : '';?>
-                                    rounded-pill bg-white shadow-sm p-2 border-faded mr-3 d-flex 
-                                    flex-row align-items-center justify-content-center flex-shrink-0">
-                                        <img src="<?php echo $person['image'];?>"
-                                        alt="<?php echo $person['image_alt'];?>"
-                                        class="img-thumbnail img-responsive rounded-circle" style="width:5rem; height: 5rem;">
-                                        <div class="ml-2 mr-3">
-                                            <h5 class="m-0">
-                                            <?php echo $person['name'];?>
-                                                <small class="m-0 fw-300">
-                                                    <?php echo $person['job_title'];?>
-                                                </small>
-                                            </h5>
-                                            <a href="<?php echo $person['twitter_link_href'];?>" class="text-info fs-sm"
-                                            target="_blank"><?php echo $person['twitter_link_href'];?></a> -
-                                            <a href="<?php echo $person['email_link_href'];?>" class="text-info fs-sm"
-                                            target="_blank" title="<?php echo $person['email_link_title'];?>">
-                                            <?php echo $person['email_link_text'];?></a>
-                                        </div>
-                                    </div>
-                                <?php endforeach;?>
+                            <h5 class="frame-heading">
+                                Обычная таблица
+                            </h5>
+                            <div class="frame-wrap">
+                                <table class="table m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
+                                        <?php foreach($users as $user):?>
+                                            <tr>
+                                                <th scope="row"><?php echo $user['id'];?></th>
+                                                <td><?php echo $user['first_name'];?></td>
+                                                <td><?php echo $user['last_name'];?></td>
+                                                <td><?php echo $user['username'];?></td>
+                                                <td>
+                                                    <a href="app/show.php?id=<?php echo $user['id'];?>" class="btn btn-info">Просмотреть</a>
+                                                    <a href="app/edit.php?id=<?php echo $user['id'];?>" class="btn btn-warning">Изменить</a>
+                                                    <a href="app/delete.php?id=<?php echo $user['id'];?>" class="btn btn-danger">Удалить</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach;?>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

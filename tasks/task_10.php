@@ -1,6 +1,8 @@
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -19,6 +21,7 @@
     </head>
     <body class="mod-bg-1 mod-nav-link ">
         <main id="js-page-content" role="main" class="page-content">
+
             <div class="col-md-6">
                 <div id="panel-1" class="panel">
                     <div class="panel-hdr">
@@ -34,13 +37,29 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-danger fade show" role="alert">
-                                        You should check in on some of those fields below.
-                                    </div>
-                                    <form action="">
+                                    
+                                    <?php if(isset($_SESSION['danger'])):?>
+                                        <div class="alert alert-danger fade show" role="alert">
+                                            <?php
+                                                echo $_SESSION['danger'];
+                                                unset($_SESSION['danger']);
+                                            ?>
+                                        </div>
+                                    <?php endif;?>
+
+                                    <?php if(isset($_SESSION['success'])):?>
+                                        <div class="alert alert-success fade show" role="alert">
+                                            <?php
+                                                echo $_SESSION['success'];
+                                                unset($_SESSION['success']);
+                                            ?>
+                                        </div>
+                                    <?php endif;?>
+
+                                    <form action="app/save_10.php" method="post">
                                         <label class="form-label" for="simpleinput">Text</label>
-                                        <input type="text" id="simpleinput" class="form-control">
-                                        <button class="btn btn-success mt-3">Submit</button>
+                                        <input type="text" id="simpleinput" class="form-control" name="text">
+                                        <button class="btn btn-success mt-3" type="submit">Submit</button>
                                     </form>
                                 </div>
                             </div>

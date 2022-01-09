@@ -1,6 +1,6 @@
 <?php
 $dsn = 'mysql:host=localhost;dbname=Marlin3';
 $userdb = 'root';
-$passdb = '$Zxcvbnm@123';
+$passdb = '';
 
 $pdo = new PDO($dsn, $userdb, $passdb);

@@ -1,6 +1,7 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -35,9 +36,9 @@
                             <div class="panel-content">
                                 <div class="form-group">
                                     <div class="alert alert-success fade show" role="alert">
-                                        Здравствуйте, ИМЯ_ПОЛЬЗОВАТЕЛЯ.
+                                        Здравствуйте, <?php echo $_SESSION['email'];?>.
                                     </div>
-                                    <a href="#" class="btn btn-info">Выйти</a>
+                                    <a href="app/controllers/task_15_handler.php" class="btn btn-info">Выйти</a>
                                 </div>
                             </div>
                         </div>

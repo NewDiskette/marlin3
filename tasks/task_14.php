@@ -1,6 +1,7 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -34,17 +35,24 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                    <div class="alert alert-danger fade show" role="alert">
-                                        Неверный логин или пароль
-                                    </div>
-                                    <form action="">
+                                    
+                                    <?php if(!empty($_SESSION['message'])):?>
+                                        <div class="alert alert-danger fade show" role="alert">
+                                            <?php
+                                                echo $_SESSION['message'];
+                                                unset($_SESSION['message']);
+                                            ?>
+                                        </div>
+                                    <?php endif;?>
+                                    
+                                    <form action="app/controllers/task_14_handler.php" method="post">
                                         <div class="form-group">
                                         	<label class="form-label" for="simpleinput">Email</label>
-                                        <input type="text" id="simpleinput" class="form-control">
+                                            <input type="text" id="simpleinput" name="email" class="form-control">
                                         </div>
 
                                         <label class="form-label" for="simpleinput">Password</label>
-                                        <input type="password" id="simpleinput" class="form-control">
+                                        <input type="password" id="simpleinput" name="password" class="form-control">
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>

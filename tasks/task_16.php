@@ -1,6 +1,11 @@
+<?php 
+    include 'app/models/functions.php';
+    $images = get_column_from_db ('`images`', '`image`');
+    var_dump($images);
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
         <meta charset="utf-8">
         <title>
             Подготовительные задания к курсу
@@ -35,10 +40,10 @@
                             <div class="panel-content">
                                 <div class="panel-content">
                                     <div class="form-group">
-                                        <form action="">
+                                        <form enctype="multipart/form-data" action="app/controllers/task_16_handler.php" method="post">
                                             <div class="form-group">
                                                 <label class="form-label" for="simpleinput">Image</label>
-                                            <input type="file" id="simpleinput" class="form-control">
+                                                <input type="file" id="simpleinput" name="image" class="form-control">
                                             </div>
                                             <button class="btn btn-success mt-3">Submit</button>
                                         </form>
@@ -49,39 +54,36 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <div id="panel-1" class="panel">
-                        <div class="panel-hdr">
-                            <h2>
-                                Загруженные картинки
-                            </h2>
-                            <div class="panel-toolbar">
-                                <button class="btn btn-panel waves-effect waves-themed" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
-                                <button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                <?php if(!empty($images)):?>
+                    <div class="col-md-6">
+                        <div id="panel-1" class="panel">
+                            <div class="panel-hdr">
+                                <h2>
+                                    Загруженные картинки
+                                </h2>
+                                <div class="panel-toolbar">
+                                    <button class="btn btn-panel waves-effect waves-themed" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Collapse"></button>
+                                    <button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel-container show">
-                            <div class="panel-content">
-                                <div class="panel-content image-gallery">
-                                    <div class="row">
-                                        <div class="col-md-3 image">
-                                            <img src="img/demo/gallery/1.jpg">
-                                            <a class="btn btn-danger" href="#" onclick="confirm('Вы уверены?');">Удалить</a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <img src="img/demo/gallery/2.jpg">
-                                            <a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="#">Удалить</a>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <img src="img/demo/gallery/3.jpg">
-                                            <a class="btn btn-danger" onclick="confirm('Вы уверены?');" href="#">Удалить</a>
+
+                            <?php foreach($images as $img):?>
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="panel-content image-gallery">
+                                            <div class="row">
+                                                <div class="col-md-3 image">
+                                                    <img src="app/uploads/images/<?php echo $img['image'];?>">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endforeach;?>
+
                         </div>
                     </div>
-                </div>
+                <?php endif;?>
             </div>
 
 
